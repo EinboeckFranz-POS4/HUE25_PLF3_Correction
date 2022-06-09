@@ -4,13 +4,11 @@
 //   (C)Robert Grueneis/HTL Grieskirchen 
 //----------------------------------------
 
-using GrueneisR.RestClientGenerator;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.OpenApi.Models;
+using BikeStore.Services;
 
-string corsKey = "_myCorsKey";
-string swaggerVersion = "v1";
-string swaggerTitle = "BikeStore";
+const string corsKey = "_myCorsKey";
+const string swaggerVersion = "v1";
+const string swaggerTitle = "BikeStore";
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,15 +25,19 @@ builder.Services
     x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
   ))
   .AddRestClientGenerator(options => options
-	  .SetFolder(@"D:\Schularbeit\Temp")
+	  .SetFolder(@"C:\Temp")
 	  .SetFilename("_requests.http")
 	  .SetAction($"swagger/{swaggerVersion}/swagger.json")
 	  //.EnableLogging()
   );
 
-string connectionString = builder.Configuration.GetConnectionString("BikeStore");
+var connectionString = builder.Configuration.GetConnectionString("BikeStore");
 Console.WriteLine($"******** ConnectionString: {connectionString}");
 builder.Services.AddDbContext<BikeStoreContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddScoped<CategoryService>();
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<StoreService>();
+builder.Services.AddScoped<OrderService>();
 #endregion
 
 var app = builder.Build();

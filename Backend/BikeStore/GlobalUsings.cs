@@ -10,6 +10,7 @@ global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Routing;
+global using Microsoft.OpenApi.Models;
 
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +18,9 @@ global using Microsoft.Extensions.Hosting;
 global using Microsoft.Extensions.Logging;
 
 global using Microsoft.EntityFrameworkCore;
+global using GrueneisR.RestClientGenerator;
 
 global using BikeStore;
 global using BikeStoreDb;
+global using BikeStore.Dtos;
+global using BikeStore.Services;
