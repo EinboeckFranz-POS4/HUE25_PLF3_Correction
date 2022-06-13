@@ -15,6 +15,7 @@ input {
     min-width: 70px;
     margin: 5px;
 }
+
 .btnNoBorder {
     border: none !important;
 }
@@ -35,7 +36,7 @@ input {
     margin-top: 10px;
     margin-bottom: 10px;
     border: 1px dotted black;
-    padding:5px;
+    padding: 5px;
 }
 
 #basket {
